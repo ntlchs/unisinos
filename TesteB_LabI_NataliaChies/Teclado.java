@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Teclado {
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static int readInt() {
+        int input = scanner.nextInt();
+        scanner.nextLine(); // Consume the remaining newline character
+        return input;
+    }
+
+    public static float readFloat() {
+        float input = scanner.nextFloat();
+        scanner.nextLine(); // Consume the remaining newline character
+        return input;
+    }
+
+    public static String readString() {
+        String input = scanner.nextLine();
+        return input;
+    }
+
+    public static char readChar() {
+        String input = scanner.nextLine();
+        return input.charAt(0);
+    }
+
+}
