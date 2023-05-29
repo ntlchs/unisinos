@@ -1,7 +1,7 @@
 public class ControleTeleSena {
-    private final int numMaxTelesenas = 15;
-    public final int tamanhoTeleSena = 5;
-    public final int tamanhoAposta = 2;
+    private final int numMaxTelesenas = 300;
+    public final int tamanhoTeleSena = 60;
+    public final int tamanhoAposta = 25;
     public final int precoPorTeleSena = 10;
 
     private Pessoa[] pessoas;
@@ -68,7 +68,7 @@ public class ControleTeleSena {
         for (Pessoa pessoa : pessoas) {
             boolean premiada = false;
             TeleSena[] teleSenas = pessoa.getTeleSenas();
-            System.out.println("Analisando TeleSenas de " + pessoa.getNome() + "...");
+            // System.out.println("Analisando TeleSenas de " + pessoa.getNome() + "...");
             for (int i = 0; i < teleSenas.length; i++) {
                 TeleSena teleSena = teleSenas[i];
                 int[][] conjuntos = teleSena.getConjuntos();
@@ -76,19 +76,17 @@ public class ControleTeleSena {
                     int[] conjunto = conjuntos[j];
                     if (saoIguais(numerosSorteados, conjunto)) {
                         premiada = true;
-                        System.out.println("TeleSena " + (i + 1) + ": Premiada, conjunto "
-                                + (j + 1) + ": ");
-                        for (int k = 0; k < numerosSorteados.length; k++) {
-                            System.out.print(conjunto[k] + " ");
-                        }
-                        System.out.println("\n");
-                        System.out.println("Adicionando " + pessoa.getNome() + " aos ganhadores...\n");
+                        // System.out.println("TeleSena " + (i + 1) + ": Premiada, conjunto "
+                        // + (j + 1) + ": ");
+                        // System.out.println("\n");
+                        // System.out.println("Adicionando " + pessoa.getNome() + " aos
+                        // ganhadores...\n");
                         ganhadores = addGanhador(ganhadores, pessoa);
                     }
                 }
             }
             if (!premiada) {
-                System.out.println("Não premiada(s)");
+                // System.out.println("Não premiada(s)");
             }
         }
         return ganhadores;
@@ -100,11 +98,10 @@ public class ControleTeleSena {
             ganhadoresAtualizada[i] = ganhadores[i];
         }
         ganhadoresAtualizada[ganhadores.length] = ganhador;
-        System.out.println("Lista de ganhadores atualizada: ");
+        // System.out.println("Lista de ganhadores atualizada: ");
         for (Pessoa p : ganhadoresAtualizada) {
-            System.out.println(p.getNome());
+            // System.out.println(p.getNome());
         }
-        System.out.println("\n");
         return ganhadoresAtualizada;
     }
 

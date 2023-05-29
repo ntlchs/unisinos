@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
 
-        int tamanhoGrupoParticipantes = 3;
+        int tamanhoGrupoParticipantes = 20;
 
         NomesFicticios nomesFicticios = new NomesFicticios();
         String[] nomes = nomesFicticios.nomesAleatorios(tamanhoGrupoParticipantes);
@@ -33,22 +33,31 @@ public class Main {
             System.out.println(result);
         }
 
+        int rodada = 1;
+        System.out.println("Iniciando rodada " + rodada + "...\n");
+
         System.out.println("Realizando sorteio...\n");
         int[] sorteio;
         Pessoa[] ganhadores;
 
+        System.out.print("Números sorteados: ");
         do {
             sorteio = controleTeleSena.sortearNumeros();
-            System.out.print("Números sorteados: ");
             for (int i = 0; i < sorteio.length; i++) {
                 System.out.print(sorteio[i] + " ");
             }
-            System.out.println("\n");
 
             System.out.println("Verificando sorteio...\n");
             ganhadores = controleTeleSena.verificarSorteio(sorteio);
             if (ganhadores.length <= 0) {
                 System.out.println("Sem vencedores nessa rodada. Realizando novo sorteio.\n");
+                rodada++;
+                System.out.println("Iniciando rodada " + rodada + "...\n");
+                try {
+                    Thread.sleep(900);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             } else {
                 System.out.println("Vencedores:");
                 for (Pessoa ganhador : ganhadores) {
