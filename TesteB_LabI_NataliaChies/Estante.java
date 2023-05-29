@@ -66,7 +66,7 @@ public class Estante {
         int contador = 0;
         int ano = Calendar.getInstance().get(Calendar.YEAR);
 
-        while (contador < numLivros && ano >= 1800) {
+        while (contador < numLivros && ano >= 0) {
             for (Livro livro : livros) {
                 if (livro != null && livro.getAnoDeCriacao() == ano) {
                     System.out.println(contador + ": " + livro.getTitulo() + " (" + livro.getAnoDeCriacao() + ")");
