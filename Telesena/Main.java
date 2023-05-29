@@ -34,25 +34,23 @@ public class Main {
         }
 
         int rodada = 1;
-        System.out.println("Iniciando rodada " + rodada + "...\n");
+        System.out.println("Iniciando rodada " + rodada + "...");
 
-        System.out.println("Realizando sorteio...\n");
         int[] sorteio;
         Pessoa[] ganhadores;
 
-        System.out.print("Números sorteados: ");
         do {
             sorteio = controleTeleSena.sortearNumeros();
+
+            System.out.print("Números sorteados: ");
             for (int i = 0; i < sorteio.length; i++) {
                 System.out.print(sorteio[i] + " ");
             }
-
-            System.out.println("Verificando sorteio...\n");
             ganhadores = controleTeleSena.verificarSorteio(sorteio);
             if (ganhadores.length <= 0) {
-                System.out.println("Sem vencedores nessa rodada. Realizando novo sorteio.\n");
+                System.out.println("\nSem vencedores nessa rodada.");
                 rodada++;
-                System.out.println("Iniciando rodada " + rodada + "...\n");
+                System.out.println("\nIniciando rodada " + rodada + "...");
                 try {
                     Thread.sleep(900);
                 } catch (InterruptedException e) {
