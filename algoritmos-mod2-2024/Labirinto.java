@@ -56,6 +56,9 @@ public class Labirinto {
     }
     maze[row][col] = 'V'; // marcar como visitado
 
+    printMaze();
+    System.out.println();
+
     return (
       labirinto(maze, row - 1, col) || // cima
       labirinto(maze, row + 1, col) || // baixo
