@@ -1,33 +1,33 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Metodo1<E> {
 
-  private E[] elementos;
-  private int tamanho;
+  private List<E> elements = new ArrayList<>();
 
-  @SuppressWarnings("unchecked")
-  public Metodo1(int capacidadeInicial) {
-    elementos = (E[]) new Object[capacidadeInicial];
-    tamanho = 0;
-  }
-
-  public boolean addToList(E elemento) {
-    if (tamanho == elementos.length) {
-      return false;
+  public void initList(E[] els) {
+    for (E el : els) {
+      elements.add(el);
     }
-    elementos[tamanho++] = elemento;
-    return true;
   }
 
-  public int contaElementos(E el) {
+  public List<E> getList() {
+    return elements;
+  }
+
+  public int contaElementos(E el) throws IllegalArgumentException {
+    if (el == null) {
+      throw new IllegalArgumentException("Elemento não pode ser nulo");
+    }
     return recursiveElementCount(el, 0);
   }
 
   private int recursiveElementCount(E el, int index) {
-    if (index >= tamanho) {
+    if (index == elements.size()) {
       return 0;
     }
-    return (
-      (elementos[index].equals(el) ? 1 : 0) +
-      recursiveElementCount(el, index + 1)
-    );
+    E currentElement = elements.get(index);
+    int count = currentElement.equals(el) ? 1 : 0;
+    return count + recursiveElementCount(el, index + 1);
   }
 }
