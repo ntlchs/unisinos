@@ -9,8 +9,6 @@ public class Main {
 
     testArrayCount();
     testObjectCount();
-    testOverflowException();
-    testUnderflowException();
 
     testBracketChecking();
   }
@@ -19,7 +17,7 @@ public class Main {
     Metodo1<T> metodo1 = new Metodo1<>(elements.length);
     metodo1.initList(elements);
     int count = metodo1.contaElementos(target);
-    System.out.println("Count of " + target + ": " + count);
+    System.out.println(target + ": " + count);
   }
 
   private static void testArrayCount() {
@@ -29,7 +27,7 @@ public class Main {
     int[][] arrays = { arr1, arr1, arr2, arr1, arr2 };
     metodo1Array.initList(arrays);
     int countArr = metodo1Array.contaElementos(arr1);
-    System.out.println("Count of array [1, 2, 3]: " + countArr);
+    System.out.println("array [1, 2, 3]: " + countArr);
   }
 
   private static void testObjectCount() {
@@ -39,15 +37,7 @@ public class Main {
     Object[] objs = { obj1, obj2, obj1, obj1, obj2 };
     metodo1Obj.initList(objs);
     int countObj = metodo1Obj.contaElementos(obj1);
-    System.out.println("Count of object Obj(1): " + countObj);
-  }
-
-  private static void testOverflowException() {
-    StaticQueue<Integer> queue = new StaticQueue<>(3);
-    queue.enqueue(1);
-    queue.enqueue(2);
-    queue.enqueue(3);
-    queue.enqueue(4);
+    System.out.println("object obj(1): " + countObj);
   }
 
   public static void testUnderflowException() {
