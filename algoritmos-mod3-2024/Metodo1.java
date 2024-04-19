@@ -1,33 +1,30 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Metodo1<E> {
 
-  private List<E> elements = new ArrayList<>();
+  private List<E> list;
+  private int size;
 
-  public void initList(E[] els) {
-    for (E el : els) {
-      elements.add(el);
+  public Metodo1(int size) {
+    this.size = size;
+    this.list = new StaticList<>(size);
+  }
+
+  public void initList(E[] elements) {
+    for (int i = 0; i < size; i++) {
+      list.insert(elements[i], i);
     }
   }
 
-  public List<E> getList() {
-    return elements;
+  public int contaElementos(E element) {
+    return recursiveCount(element, 0);
   }
 
-  public int contaElementos(E el) throws IllegalArgumentException {
-    if (el == null) {
-      throw new IllegalArgumentException("Elemento não pode ser nulo");
-    }
-    return recursiveElementCount(el, 0);
-  }
-
-  private int recursiveElementCount(E el, int index) {
-    if (index == elements.size()) {
+  private int recursiveCount(E element, int index) {
+    if (index == size) {
       return 0;
     }
-    E currentElement = elements.get(index);
-    int count = currentElement.equals(el) ? 1 : 0;
-    return count + recursiveElementCount(el, index + 1);
+    return (
+      (list.get(index).equals(element) ? 1 : 0) +
+      recursiveCount(element, index + 1)
+    );
   }
 }

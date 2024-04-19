@@ -1,5 +1,3 @@
-import java.util.Stack;
-
 public class Metodo2 {
 
   public boolean checkBrackets(Stack<Character> s1) {
