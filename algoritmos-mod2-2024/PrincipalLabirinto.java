@@ -1,9 +1,12 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class PrincipalLabirinto {
 
-  public static void main(String[] args) {
+  public static void main(String[] args)
+    throws FileNotFoundException, IOException, Exception {
     Labirinto maze = new Labirinto();
 
     System.out.println("Informe o nome do arquivo do labirinto: ");
