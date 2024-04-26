@@ -40,11 +40,6 @@ public class Main {
     System.out.println("object obj(1): " + countObj);
   }
 
-  public static void testUnderflowException() {
-    StaticQueue<Integer> queue = new StaticQueue<>(3);
-    queue.dequeue();
-  }
-
   private static void testBracketChecking() {
     Metodo2 metodo2 = new Metodo2();
 
