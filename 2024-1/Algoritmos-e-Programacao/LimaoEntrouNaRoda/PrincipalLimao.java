@@ -1,18 +1,24 @@
 public class PrincipalLimao {
 
   public static void main(String[] args) {
-    LimaoEntrouNaRoda l = new LimaoEntrouNaRoda(10);
-    l.imprimeRoda();
+    int rodada = 1;
+    LimaoEntrouNaRoda jogo = new LimaoEntrouNaRoda(10);
+    System.out.println("Roda inicial:");
+    jogo.imprimeRoda();
     System.out.println("*****");
     boolean acabou = false;
-    Pessoa p = null;
+    Pessoa pessoa = null;
     while (!acabou) {
-      int posicao = l.passaObjeto(14);
-      p = l.removePosicao(posicao);
-      l.imprimeRoda();
+      int posicao = jogo.passaObjeto(14);
+      pessoa = jogo.removePosicao(posicao);
+      System.out.println("Rodada " + rodada);
+      System.out.println("Objeto na posição " + posicao);
+      jogo.imprimeRoda();
       System.out.println("************");
-      acabou = p != null;
+      rodada++;
+      acabou = pessoa != null; // checa se pessoa é != null
     }
-    System.out.println(p);
+    System.out.println("Vencedor:");
+    System.out.println(pessoa);
   }
 }
