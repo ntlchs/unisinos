@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-
 interface Movable {
     void move();
 }
@@ -46,22 +45,22 @@ public class Main {
             System.out.println();
         }
 
-        // Example of abstract class and interface
+        System.out.println("=== Inheritance Example ===");
         Animal animal = new Dog();
         animal.makeSound();
 
-        // Example of interface
+        System.out.println("=== Interface Example ===");
         Movable car = new Car();
         car.move();
 
-        // Example of exceptions (try-catch and throws)
+        System.out.println("=== Exception Example ===");
         try {
-            main.readFile("example.txt");
+            main.readFile("foo.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        // Example of file reading
+        System.out.println("=== File Reading Example ===");
         main.readFileWithScanner("example.txt");
 
         // Example of file writing
@@ -73,29 +72,29 @@ public class Main {
         System.out.println("Casting int to double: " + doubleValue);
 
         // Example of assignment
-        int x = 10;
+        double x = 10;
         int y = 20;
         x = y;
-        System.out.println("After assignment, x: " + x);
+        System.out.println("After assigning int y to double x: " + x);
 
         // Example of recursion
         System.out.println("Factorial of 5: " + main.factorial(5));
 
         // Example of search methods
-        int[] arr = {1, 2, 3, 4, 5};
+        int[] arr = { 1, 2, 3, 4, 5 };
         System.out.println("Sequential search for 3: " + main.sequentialSearch(arr, 3));
         System.out.println("Binary search for 3: " + main.binarySearch(arr, 3));
 
         // Example of sorting methods
-        int[] unsortedArray = {5, 2, 9, 1, 5, 6};
+        int[] unsortedArray = { 5, 2, 9, 1, 5, 6 };
         main.insertionSort(unsortedArray);
         main.printArray(unsortedArray, "Insertion Sort");
 
-        int[] unsortedArray2 = {5, 2, 9, 1, 5, 6};
+        int[] unsortedArray2 = { 5, 2, 9, 1, 5, 6 };
         main.bubbleSort(unsortedArray2);
         main.printArray(unsortedArray2, "Bubble Sort");
 
-        int[] unsortedArray3 = {5, 2, 9, 1, 5, 6};
+        int[] unsortedArray3 = { 5, 2, 9, 1, 5, 6 };
         main.selectionSort(unsortedArray3);
         main.printArray(unsortedArray3, "Selection Sort");
 
@@ -103,6 +102,68 @@ public class Main {
         Box<Integer> integerBox = new Box<>();
         integerBox.set(10);
         System.out.println("Box contains: " + integerBox.get());
+
+        // Demonstrate StaticList
+        System.out.println("=== StaticList Example ===");
+        StaticList<Integer> staticList = new StaticList<>(10);
+        staticList.insert(0, 0);
+        staticList.insert(1, 1);
+        staticList.insert(2, 2);
+        System.out.println("StaticList: " + staticList.toString());
+
+        // Demonstrate SinglyLinkedList
+        System.out.println("=== SinglyLinkedList Example ===");
+        SinglyLinkedList<Integer> singlyLinkedList = new SinglyLinkedList<>();
+        singlyLinkedList.insertFirst(0);
+        singlyLinkedList.insertLast(1);
+        singlyLinkedList.insertFirst(2);
+        singlyLinkedList.insert(4, 1);
+        System.out.println("SinglyLinkedList: " + singlyLinkedList);
+        int sllPos = singlyLinkedList.search(4);
+        System.out.println("SinglyLinkedList search for 4, position: " + sllPos);
+
+        // Demonstrate DoublyLinkedList
+        System.out.println("=== DoublyLinkedList Example ===");
+        DoublyLinkedList<Integer> doublyLinkedList = new DoublyLinkedList<>();
+        doublyLinkedList.insert(3, 0);
+        doublyLinkedList.insert(2, 1);
+        doublyLinkedList.insertFirst(4);
+
+        System.out.println("Is empty:" + doublyLinkedList.isEmpty());
+
+        System.out.println("DoublyLinkedList: " + doublyLinkedList);
+
+        // Demonstrate StaticStack
+        System.out.println("=== StaticStack Example ===");
+        StaticStack<Integer> staticStack = new StaticStack<>(10);
+        staticStack.push(1);
+        staticStack.push(2);
+        staticStack.push(3);
+        staticStack.push(4);
+
+        System.out.println("StaticStack: " + staticStack.toString());
+        System.out.println("Top: " + staticStack.top());
+
+        staticStack.pop();
+
+        System.out.println("StaticStack after pop: " + staticStack.toString());
+
+        // Demonstrate StaticQueue
+        System.out.println("=== StaticQueue Example ===");
+        StaticQueue<Integer> staticQueue = new StaticQueue<>(10);
+
+        staticQueue.enqueue(1);
+        staticQueue.enqueue(2);
+        staticQueue.enqueue(3);
+        staticQueue.enqueue(4);
+
+        System.out.println("StaticQueue: " + staticQueue.toString());
+        System.out.println("Front: " + staticQueue.front());
+        System.out.println("Back: " + staticQueue.back());
+
+        staticQueue.dequeue();
+
+        System.out.println("StaticQueue after dequeue: " + staticQueue.toString());
     }
 
     // Example of reading a file
@@ -226,4 +287,5 @@ public class Main {
         }
         System.out.println();
     }
+
 }
