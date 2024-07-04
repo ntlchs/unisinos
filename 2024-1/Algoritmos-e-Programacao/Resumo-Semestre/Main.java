@@ -37,7 +37,6 @@ public class Main {
         Main main = new Main();
         String nl = System.lineSeparator();
 
-
         System.out.println("=== bidimensional array ===");
         int[][] bidimensionalArray = new int[3][6];
         int count = 0;
@@ -54,17 +53,21 @@ public class Main {
             System.out.println();
         }
 
-        
-        
+        System.out.println(nl);
+
         System.out.println("=== inheritance ===");
         System.out.println("animal is a dog");
         System.out.println("animal make sound: ");
         Animal animal = new Dog();
         animal.makeSound();
 
+        System.out.println(nl);
+
         System.out.println("=== interface ===");
         Movable car = new Car();
         car.move();
+
+        System.out.println(nl);
 
         System.out.println("=== exception ===");
         try {
@@ -73,17 +76,33 @@ public class Main {
             e.printStackTrace();
         }
 
+        System.out.println(nl);
+
         System.out.println("=== File Reading ===");
-        main.readFileWithScanner("example.txt");
+        try {
+            main.readFile("example.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(nl);
 
         System.out.println("=== File Writing ===");
-        main.writeFile("output.txt");
+        try {
+            main.writeFile("output.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println("output.txt created");
+
+        System.out.println(nl);
 
         System.out.println("=== casting ===");
         int intValue = 42;
         double doubleValue = (double) intValue;
         System.out.println("Casting int to double: " + doubleValue);
+
+        System.out.println(nl);
 
         System.out.println("=== assignment ===");
         double x = 10;
@@ -91,39 +110,64 @@ public class Main {
         x = y;
         System.out.println("assigned int y to double x: " + x);
 
+        System.out.println(nl);
+
         System.out.println("=== recursion ===");
         System.out.println("factorial of 5: " + main.factorial(5));
 
+        System.out.println(nl);
+
+        System.out.println("=== search ===");
         int[] arr = { 1, 2, 3, 4, 5 };
         System.out.println("sequential search for 3: " + main.sequentialSearch(arr, 3));
         System.out.println("binary search for 3: " + main.binarySearch(arr, 3));
 
-        int[] unsortedArray = { 5, 2, 9, 1, 5, 6 };
-        main.insertionSort(unsortedArray);
+        System.out.println(nl);
+
         System.out.println("=== insertion sort ===");
-        Arrays.toString(unsortedArray);
+        int[] unsortedArray = { 5, 2, 9, 1, 5, 6 };
+        System.out.println(Arrays.toString(unsortedArray));
+        main.insertionSort(unsortedArray);
+        System.out.println(Arrays.toString(unsortedArray));
 
-        int[] unsortedArray2 = { 5, 2, 9, 1, 5, 6 };
-        main.bubbleSort(unsortedArray2);
+        System.out.println(nl);
+
         System.out.println("=== bubble sort ===");
-        Arrays.toString(unsortedArray2);
+        int[] unsortedArray2 = { 5, 2, 9, 1, 5, 6 };
+        System.out.println(Arrays.toString(unsortedArray2));
 
-        int[] unsortedArray3 = { 5, 2, 9, 1, 5, 6 };
-        main.selectionSort(unsortedArray3);
+        main.bubbleSort(unsortedArray2);
+        System.out.println(Arrays.toString(unsortedArray2));
+
+        System.out.println(nl);
+
         System.out.println("=== selection sort ===");
-        Arrays.toString(unsortedArray3);
+        int[] unsortedArray3 = { 5, 2, 9, 1, 5, 6 };
+        System.out.println(Arrays.toString(unsortedArray3));
+        main.selectionSort(unsortedArray3);
+        System.out.println(Arrays.toString(unsortedArray3));
 
-        // generic types
+        System.out.println(nl);
+
+        System.out.println("=== generic types ===");
         Box<Integer> integerBox = new Box<>();
         integerBox.set(10);
         System.out.println("box contains: " + integerBox.get());
+
+        System.out.println(nl);
 
         System.out.println("=== StaticList ===");
         StaticList<Integer> staticList = new StaticList<>(10);
         staticList.insert(0, 0);
         staticList.insert(1, 1);
         staticList.insert(2, 2);
+        staticList.insert(3, 3);
         System.out.println("StaticList: " + staticList.toString());
+        staticList.remove(3);
+        System.out.println("after remove at pos 3: " + staticList.toString());
+        System.out.println("is empty:" + staticList.isEmpty() + ", is full: " + staticList.isFull());
+
+        System.out.println(nl);
 
         System.out.println("=== SinglyLinkedList ===");
         SinglyLinkedList<Integer> singlyLinkedList = new SinglyLinkedList<>();
@@ -133,15 +177,25 @@ public class Main {
         singlyLinkedList.insert(4, 1);
         System.out.println("SinglyLinkedList: " + singlyLinkedList);
         int sllPos = singlyLinkedList.search(4);
-        System.out.println("SinglyLinkedList search for 4, position: " + sllPos);
+        System.out.println("search for 4, position: " + sllPos);
+        singlyLinkedList.remove(1);
+        System.out.println("after remove at pos 1: " + singlyLinkedList);
+        System.out.println("is empty:" + singlyLinkedList.isEmpty() + ", is full: " + singlyLinkedList.isFull());
+
+        System.out.println(nl);
 
         System.out.println("=== DoublyLinkedList ===");
         DoublyLinkedList<Integer> doublyLinkedList = new DoublyLinkedList<>();
         doublyLinkedList.insert(3, 0);
         doublyLinkedList.insert(2, 1);
         doublyLinkedList.insertFirst(4);
+        doublyLinkedList.insertLast(5);
+        System.out.println("DoublyLinkedList: " + doublyLinkedList);
+        doublyLinkedList.remove(1);
         System.out.println("is empty:" + doublyLinkedList.isEmpty() + ", is full: " + doublyLinkedList.isFull());
         System.out.println("DoublyLinkedList: " + doublyLinkedList);
+
+        System.out.println(nl);
 
         System.out.println("=== StaticStack ===");
         StaticStack<Integer> staticStack = new StaticStack<>(10);
@@ -153,8 +207,10 @@ public class Main {
         System.out.println("Top: " + staticStack.top());
         staticStack.pop();
         System.out.println("StaticStack after pop: " + staticStack.toString());
+        System.out.println("is empty:" + staticStack.isEmpty() + ", is full: " + staticStack.isFull());
 
-        // Demonstrate StaticQueue
+        System.out.println(nl);
+
         System.out.println("=== StaticQueue ===");
         StaticQueue<Integer> staticQueue = new StaticQueue<>(10);
         staticQueue.enqueue(1);
@@ -166,37 +222,38 @@ public class Main {
         System.out.println("Back: " + staticQueue.back());
         staticQueue.dequeue();
         System.out.println("StaticQueue after dequeue: " + staticQueue.toString());
+        System.out.println("is empty:" + staticQueue.isEmpty() + ", is full: " + staticQueue.isFull());
+
+        System.out.println(nl);
+        System.out.println("=== End :) ===");
     }
 
-    public void readFile(String fileName) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(fileName));
+    public void readFile(String fileName) throws FileNotFoundException, IOException {
+        if (fileName == null) {
+            throw new IllegalArgumentException("File name is null");
+        }
+        FileReader fr = new FileReader(fileName);
+        BufferedReader reader = new BufferedReader(fr);
         String line;
         while ((line = reader.readLine()) != null) {
             System.out.println(line);
         }
         reader.close();
+
     }
 
-    public void readFileWithScanner(String fileName) {
-        try {
-            Scanner scanner = new Scanner(new File(fileName));
-            while (scanner.hasNextLine()) {
-                System.out.println(scanner.nextLine());
-            }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+    public void readFileWithScanner(String fileName) throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File(fileName));
+        while (scanner.hasNextLine()) {
+            System.out.println(scanner.nextLine());
         }
+        scanner.close();
     }
 
-    public void writeFile(String fileName) {
-        try {
-            PrintWriter writer = new PrintWriter(new FileWriter(fileName));
-            writer.println("Hello, world!");
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void writeFile(String fileName) throws IOException {
+        PrintWriter writer = new PrintWriter(new FileWriter(fileName));
+        writer.println("Hello, world!");
+        writer.close();
     }
 
     // recursion
