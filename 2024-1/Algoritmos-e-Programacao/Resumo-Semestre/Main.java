@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Scanner;
 
 interface Movable {
@@ -34,10 +35,18 @@ public class Main {
 
     public static void main(String[] args) {
         Main main = new Main();
+        String nl = System.lineSeparator();
 
-        // Example of a bidimensional array
+
+        System.out.println("=== bidimensional array ===");
         int[][] bidimensionalArray = new int[3][6];
-        // Example of looping through a bidimensional array
+        int count = 0;
+        for (int i = 0; i < bidimensionalArray.length; i++) {
+            for (int j = 0; j < bidimensionalArray[i].length; j++) {
+                bidimensionalArray[i][j] = count;
+                count++;
+            }
+        }
         for (int i = 0; i < bidimensionalArray.length; i++) {
             for (int j = 0; j < bidimensionalArray[i].length; j++) {
                 System.out.print(bidimensionalArray[i][j] + " ");
@@ -45,74 +54,78 @@ public class Main {
             System.out.println();
         }
 
-        System.out.println("=== Inheritance Example ===");
+        
+        
+        System.out.println("=== inheritance ===");
+        System.out.println("animal is a dog");
+        System.out.println("animal make sound: ");
         Animal animal = new Dog();
         animal.makeSound();
 
-        System.out.println("=== Interface Example ===");
+        System.out.println("=== interface ===");
         Movable car = new Car();
         car.move();
 
-        System.out.println("=== Exception Example ===");
+        System.out.println("=== exception ===");
         try {
             main.readFile("foo.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        System.out.println("=== File Reading Example ===");
+        System.out.println("=== File Reading ===");
         main.readFileWithScanner("example.txt");
 
-        // Example of file writing
+        System.out.println("=== File Writing ===");
         main.writeFile("output.txt");
+        System.out.println("output.txt created");
 
-        // Example of casting
+        System.out.println("=== casting ===");
         int intValue = 42;
         double doubleValue = (double) intValue;
         System.out.println("Casting int to double: " + doubleValue);
 
-        // Example of assignment
+        System.out.println("=== assignment ===");
         double x = 10;
         int y = 20;
         x = y;
-        System.out.println("After assigning int y to double x: " + x);
+        System.out.println("assigned int y to double x: " + x);
 
-        // Example of recursion
-        System.out.println("Factorial of 5: " + main.factorial(5));
+        System.out.println("=== recursion ===");
+        System.out.println("factorial of 5: " + main.factorial(5));
 
-        // Example of search methods
         int[] arr = { 1, 2, 3, 4, 5 };
-        System.out.println("Sequential search for 3: " + main.sequentialSearch(arr, 3));
-        System.out.println("Binary search for 3: " + main.binarySearch(arr, 3));
+        System.out.println("sequential search for 3: " + main.sequentialSearch(arr, 3));
+        System.out.println("binary search for 3: " + main.binarySearch(arr, 3));
 
-        // Example of sorting methods
         int[] unsortedArray = { 5, 2, 9, 1, 5, 6 };
         main.insertionSort(unsortedArray);
-        main.printArray(unsortedArray, "Insertion Sort");
+        System.out.println("=== insertion sort ===");
+        Arrays.toString(unsortedArray);
 
         int[] unsortedArray2 = { 5, 2, 9, 1, 5, 6 };
         main.bubbleSort(unsortedArray2);
-        main.printArray(unsortedArray2, "Bubble Sort");
+        System.out.println("=== bubble sort ===");
+        Arrays.toString(unsortedArray2);
 
         int[] unsortedArray3 = { 5, 2, 9, 1, 5, 6 };
         main.selectionSort(unsortedArray3);
-        main.printArray(unsortedArray3, "Selection Sort");
+        System.out.println("=== selection sort ===");
+        Arrays.toString(unsortedArray3);
 
-        // Example of generic types
+        // generic types
         Box<Integer> integerBox = new Box<>();
         integerBox.set(10);
-        System.out.println("Box contains: " + integerBox.get());
+        System.out.println("box contains: " + integerBox.get());
 
-        // Demonstrate StaticList
-        System.out.println("=== StaticList Example ===");
+        System.out.println("=== StaticList ===");
         StaticList<Integer> staticList = new StaticList<>(10);
         staticList.insert(0, 0);
         staticList.insert(1, 1);
         staticList.insert(2, 2);
         System.out.println("StaticList: " + staticList.toString());
 
-        // Demonstrate SinglyLinkedList
-        System.out.println("=== SinglyLinkedList Example ===");
+        System.out.println("=== SinglyLinkedList ===");
         SinglyLinkedList<Integer> singlyLinkedList = new SinglyLinkedList<>();
         singlyLinkedList.insertFirst(0);
         singlyLinkedList.insertLast(1);
@@ -122,51 +135,39 @@ public class Main {
         int sllPos = singlyLinkedList.search(4);
         System.out.println("SinglyLinkedList search for 4, position: " + sllPos);
 
-        // Demonstrate DoublyLinkedList
-        System.out.println("=== DoublyLinkedList Example ===");
+        System.out.println("=== DoublyLinkedList ===");
         DoublyLinkedList<Integer> doublyLinkedList = new DoublyLinkedList<>();
         doublyLinkedList.insert(3, 0);
         doublyLinkedList.insert(2, 1);
         doublyLinkedList.insertFirst(4);
-
-        System.out.println("Is empty:" + doublyLinkedList.isEmpty());
-
+        System.out.println("is empty:" + doublyLinkedList.isEmpty() + ", is full: " + doublyLinkedList.isFull());
         System.out.println("DoublyLinkedList: " + doublyLinkedList);
 
-        // Demonstrate StaticStack
-        System.out.println("=== StaticStack Example ===");
+        System.out.println("=== StaticStack ===");
         StaticStack<Integer> staticStack = new StaticStack<>(10);
         staticStack.push(1);
         staticStack.push(2);
         staticStack.push(3);
         staticStack.push(4);
-
         System.out.println("StaticStack: " + staticStack.toString());
         System.out.println("Top: " + staticStack.top());
-
         staticStack.pop();
-
         System.out.println("StaticStack after pop: " + staticStack.toString());
 
         // Demonstrate StaticQueue
-        System.out.println("=== StaticQueue Example ===");
+        System.out.println("=== StaticQueue ===");
         StaticQueue<Integer> staticQueue = new StaticQueue<>(10);
-
         staticQueue.enqueue(1);
         staticQueue.enqueue(2);
         staticQueue.enqueue(3);
         staticQueue.enqueue(4);
-
         System.out.println("StaticQueue: " + staticQueue.toString());
         System.out.println("Front: " + staticQueue.front());
         System.out.println("Back: " + staticQueue.back());
-
         staticQueue.dequeue();
-
         System.out.println("StaticQueue after dequeue: " + staticQueue.toString());
     }
 
-    // Example of reading a file
     public void readFile(String fileName) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
         String line;
@@ -176,7 +177,6 @@ public class Main {
         reader.close();
     }
 
-    // Example of reading a file with Scanner
     public void readFileWithScanner(String fileName) {
         try {
             Scanner scanner = new Scanner(new File(fileName));
@@ -189,7 +189,6 @@ public class Main {
         }
     }
 
-    // Example of writing to a file
     public void writeFile(String fileName) {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(fileName));
@@ -200,7 +199,7 @@ public class Main {
         }
     }
 
-    // Example of recursion
+    // recursion
     public int factorial(int n) {
         if (n == 0) {
             return 1;
@@ -209,7 +208,6 @@ public class Main {
         }
     }
 
-    // Example of sequential search
     public int sequentialSearch(int[] array, int key) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == key) {
@@ -219,7 +217,6 @@ public class Main {
         return -1;
     }
 
-    // Example of binary search
     public int binarySearch(int[] array, int key) {
         int low = 0;
         int high = array.length - 1;
@@ -236,56 +233,48 @@ public class Main {
         return -1;
     }
 
-    // Example of insertion sort
-    public void insertionSort(int[] array) {
-        for (int i = 1; i < array.length; i++) {
-            int key = array[i];
-            int j = i - 1;
-            while (j >= 0 && array[j] > key) {
-                array[j + 1] = array[j];
-                j = j - 1;
+    public void insertionSort(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            int j = i;
+            int B = arr[i];
+            while ((j > 0 && arr[j - 1] > B)) {
+                arr[j] = arr[j - 1];
+                j--;
             }
-            array[j + 1] = key;
+            arr[j] = B;
         }
     }
 
-    // Example of bubble sort
-    public void bubbleSort(int[] array) {
-        int n = array.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (array[j] > array[j + 1]) {
-                    int temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
+    public void bubbleSort(int[] arr) {
+        int i = arr.length - 1;
+        while (i > 0) {
+            int lastFlipped = 0;
+            for (int j = 0; j < i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int T = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = T;
+                    lastFlipped = j;
                 }
             }
+            i = lastFlipped;
         }
     }
 
-    // Example of selection sort
-    public void selectionSort(int[] array) {
-        int n = array.length;
-        for (int i = 0; i < n - 1; i++) {
-            int minIndex = i;
-            for (int j = i + 1; j < n; j++) {
-                if (array[j] < array[minIndex]) {
-                    minIndex = j;
+    public void selectionSort(int[] arr) {
+        int min = 0;
+        for (int i = 0; i < arr.length; i++) {
+            min = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[min]) {
+                    min = j;
                 }
-            }
-            int temp = array[minIndex];
-            array[minIndex] = array[i];
-            array[i] = temp;
-        }
-    }
 
-    // Helper method to print arrays
-    public void printArray(int[] array, String sortType) {
-        System.out.print(sortType + ": ");
-        for (int i : array) {
-            System.out.print(i + " ");
+            }
+            int T = arr[i];
+            arr[i] = arr[min];
+            arr[min] = T;
         }
-        System.out.println();
     }
 
 }
